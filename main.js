@@ -20,4 +20,19 @@ search.addEventListener('submit', function(event) {
         return response.json()
       }
     })
+    .then(function(data) {
+      // console.log(data.results);
+      for (var i = 0; i < data.results.length; i++) {
+        // console.log(data.results[i].trackName);
+        trackResult += `
+          <div class="result" id=${i}>
+          <img src="${data.results[i].artworkUrl100}">
+          <p>${data.results[i].trackName}</p>
+          <p>${data.results[i].artistName}<p/>
+          </div>
+        `
+      }
+      sectResults.innerHTML = trackResult;
+      return data;
+    })
 });
