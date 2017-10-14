@@ -35,4 +35,15 @@ search.addEventListener('submit', function(event) {
       sectResults.innerHTML = trackResult;
       return data;
     })
+    .then(function(data) {
+      let allResultDivs = document.querySelectorAll('.result');
+      allResultDivs.forEach(function(e) {
+        e.addEventListener('click', function(clickEvent) {
+          // console.log(clickEvent.path[1].id);
+          // console.log(data.results[clickEvent.path[1].id].previewUrl);
+          let audioPlayer = document.querySelector('audio');
+          audioPlayer.src = data.results[clickEvent.path[1].id].previewUrl;
+        })
+      })
+    })
 });
