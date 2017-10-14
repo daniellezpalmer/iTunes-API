@@ -10,4 +10,14 @@ search.addEventListener('submit', function(event) {
   let sectResults = document.querySelector('.results');
   let trackResult = '';
   let audio = document.querySelector('audio');
+
+  fetch(url + searchInput)
+    .then(function(response) {
+      if (response.status !== 200) {
+        console.log("Broken: " + response.status);
+        return;
+      } else {
+        return response.json()
+      }
+    })
 });
